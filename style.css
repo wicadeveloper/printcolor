@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #050404;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+h2 {
+    margin: 2rem 0 1rem;
+    font-weight: 600;
+}
+
+.gradient-display {
+    height: 200px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #ff5f6d, #ffc371);
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.controls {
+    background-color: rgb(8, 6, 6);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.color-inputs {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.color-input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.color-input label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.color-value {
+    font-family: monospace;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.gradient-options {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.option label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+label {
+    color: #ddd;
+}
+
+select, input[type="range"] {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.code-output {
+    margin-bottom: 2rem;
+}
+
+.code-output label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.code-container {
+    position: relative;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin-right: 30px;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    transition: color 0.3s;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.copy-btn:hover {
+    color: #333;
+}
+
+.randomize-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.randomize-btn:hover {
+    background-color: #3a5ce5;
+}
+
+.saved-gradients {
+    margin-top: 2rem;
+    color: #fff;
+}
+
+.gradients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.saved-gradient {
+    height: 100px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.saved-gradient:hover {
+    transform: translateY(-5px);
+}
+
+.saved-gradient .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.saved-gradient:hover .delete-btn {
+    opacity: 1;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .color-inputs, .gradient-options {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .gradient-display {
+        height: 150px;
+    }
+    
+    .gradients-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
