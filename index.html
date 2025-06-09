@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintColor Gradient Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PrintColor Gradient Generator</h1>
+        
+        <div class="gradient-display" id="gradientDisplay"></div>
+        
+        <div class="controls">
+            <div class="color-inputs">
+                <div class="color-input">
+                    <label for="color1">Color 1</label>
+                    <input type="color" id="color1" value="#ff5f6d">
+                    <span class="color-value" id="color1Value">#ff5f6d</span>
+                    <button class="copy-btn" data-target="color1Value">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <div class="color-input">
+                    <label for="color2">Color 2</label>
+                    <input type="color" id="color2" value="#ffc371">
+                    <span class="color-value" id="color2Value">#ffc371</span>
+                    <button class="copy-btn" data-target="color2Value">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="gradient-options">
+                <div class="option">
+                    <label for="gradientType">Gradient Type</label>
+                    <select id="gradientType">
+                        <option value="linear">Linear</option>
+                        <option value="radial">Radial</option>
+                    </select>
+                </div>
+                
+                <div class="option" id="degreeOption">
+                    <label for="degree">Angle (deg)</label>
+                    <input type="range" id="degree" min="0" max="360" value="90">
+                    <span id="degreeValue">90°</span>
+                </div>
+            </div>
+            
+            <div class="code-output">
+                <label>CSS Code:</label>
+                <div class="code-container">
+                    <pre id="cssCode">background: linear-gradient(90deg, #ff5f6d, #ffc371);</pre>
+                    <button class="copy-btn" data-target="cssCode">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button id="randomizeBtn" class="randomize-btn">Randomize Colors</button>
+        </div>
+        
+        <div class="saved-gradients">
+            <h2>Saved Gradients</h2>
+            <div class="gradients-grid" id="savedGradientsGrid"></div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">Copied to clipboard!</div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
